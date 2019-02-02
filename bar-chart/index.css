@@ -1,0 +1,36 @@
+:root {
+  --body-color: #F1F3F3;
+  --bar-color: #1997c6;
+  --axis-color: #D4D8DA;
+}
+
+body {
+  margin: 15px;
+  background-color: var(--body-color);
+}
+
+.bar {
+  fill: var(--bar-color);
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: var(--axis-color);
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}
+
+.x path {
+    display: none;
+}
+
+.tool-tip {
+  position: absolute;
+  left: -100%;
+  min-width: 80px;
+  background: var(--body-color);
+  border: 1px solid var(--bar-color);
+  padding: 14px;
+  text-align: center;
+}
