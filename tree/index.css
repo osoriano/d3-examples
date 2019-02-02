@@ -1,0 +1,86 @@
+:root {
+  --theme-color-blue: #3097d1;
+  --theme-color-error: #f2dede;
+
+  --tree-link-color: #ccc;
+
+  --header-btn-color: #e1e1e1;
+}
+
+/* Page Style */
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 40px 80px;
+}
+
+.btn {
+  background-color: var(--theme-color-blue);
+  color: white;
+}
+
+.btn:hover,
+.btn:focus {
+  color: var(--theme-color-blue);
+  background-color: var(--theme-color-blue);
+}
+
+.btn.disabled,
+.btn.disabled:hover,
+.btn.disabled:focus {
+  background-color: var(--theme-color-error);
+  color: gray;
+}
+
+.btn.busy {
+  color: lightgray;
+  background: darkgray;
+}
+
+#svg-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+}
+
+
+.hvr-radial-out:before {
+  background: white;
+}
+
+/* Header style */
+.header-btns {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.header-btn {
+  padding: 13px 18px;
+  background-color: var(--header-btn-color);
+  border: 0;
+}
+
+.header-btn:not(:first-child) {
+  margin-left: 15px;
+}
+
+/* Tree Style */
+.node {
+  cursor: pointer;
+}
+
+.node circle {
+  fill: white;
+  stroke: steelblue;
+  stroke-width: 3px;
+}
+
+.node text {
+  font: 12px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: var(--tree-link-color);
+  stroke-width: 2px;
+}
