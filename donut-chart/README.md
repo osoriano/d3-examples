@@ -10,3 +10,4 @@ Features
 ========
 - Uses d3v5
 - Animated
+- Updatable
