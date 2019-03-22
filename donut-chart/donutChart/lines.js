@@ -1,5 +1,3 @@
-const DONUT_DURATION = 700
-
 import { getLabelPosition } from './util.js'
 
 export default class Lines {
@@ -15,54 +13,70 @@ export default class Lines {
   }
 
   draw() {
-    this.selection.selectAll('polyline')
+    this.selection
+      .selectAll('polyline')
       .data(this.pie, this.keyAccessor)
       .enter()
       .append('polyline')
-      .attr('points', d => [this.arc.centroid(d), this.outerArc.centroid(d), getLabelPosition(d, this.outerArc, this.radius)])
+      .attr('points', d => [
+        this.arc.centroid(d),
+        this.outerArc.centroid(d),
+        getLabelPosition(d, this.outerArc, this.radius)
+      ])
       .style('opacity', 0)
       .property('__oldData__', d => d)
       .transition()
-      .delay(DONUT_DURATION)
+      .delay(700)
       .duration(500)
-      .style('opacity', .3)
+      .style('opacity', 0.3)
   }
 
   update(data) {
-    const lineUpdate = this.selection.selectAll('polyline')
+    const lineUpdate = this.selection
+      .selectAll('polyline')
       .data(this.pie(data), this.keyAccessor)
 
-    lineUpdate.enter()
+    lineUpdate
+      .enter()
       .append('polyline')
-      .attr('points', d => [this.arc.centroid(d), this.outerArc.centroid(d), getLabelPosition(d, this.outerArc, this.radius)])
+      .attr('points', d => [
+        this.arc.centroid(d),
+        this.outerArc.centroid(d),
+        getLabelPosition(d, this.outerArc, this.radius)
+      ])
       .style('opacity', 0)
       .property('__oldData__', d => d)
       .transition()
       .duration(500)
-      .style('opacity', .3)
+      .style('opacity', 0.3)
 
-    lineUpdate.exit()
-        .transition()
-        .duration(300)
-        .style('opacity', 0)
-        .remove()
+    lineUpdate
+      .exit()
+      .transition()
+      .duration(300)
+      .style('opacity', 0)
+      .remove()
 
     const self = this
     lineUpdate
       .transition()
       .duration(500)
-      .attrTween('points', function(d) { return self.updateLineTween(d, this) })
-
+      .attrTween('points', function(d) {
+        return self.updateLineTween(d, this)
+      })
   }
 
   updateLineTween(d, ctx) {
     const { __oldData__ } = ctx
     ctx.__oldData__ = d
-    const i = d3.interpolate(__oldData__, d);
+    const i = d3.interpolate(__oldData__, d)
     return t => {
       const curr = i(t)
-      return [this.arc.centroid(curr), this.outerArc.centroid(curr), getLabelPosition(curr, this.outerArc, this.radius)]
+      return [
+        this.arc.centroid(curr),
+        this.outerArc.centroid(curr),
+        getLabelPosition(curr, this.outerArc, this.radius)
+      ]
     }
   }
-
 }
