@@ -10,22 +10,22 @@ export default class DonutChart {
   constructor() {
     /* Default props */
     this.props = {
-      colorScheme: d => defaultColorScheme(this.props.keyAccessor(d)),
+      colorScheme: (d) => defaultColorScheme(this.props.keyAccessor(d)),
       cornerRadius: 3,
       height: 500,
-      labelHtml: d => d.data,
+      labelHtml: (d) => d.data,
       padAngle: 0.015,
-      tooltipHtml: d => d.data,
-      tooltipOffset: d => -15,
-      valueAccessor: d => d,
-      keyAccessor: d => d,
+      tooltipHtml: (d) => d.data,
+      tooltipOffset: (d) => -15,
+      valueAccessor: (d) => d,
+      keyAccessor: (d) => d,
       width: 960,
-      data: []
+      data: [],
     }
 
     /* Getters/setters (with updates) for props */
     for (const prop in this.props) {
-      this[prop] = value => {
+      this[prop] = (value) => {
         if (value === undefined) {
           return this.props[prop]
         }
@@ -50,10 +50,7 @@ export default class DonutChart {
     props.radius = Math.min(width, height) / 2
 
     /* Maps raw data to d3.arc input */
-    props.pie = d3
-      .pie()
-      .value(valueAccessor)
-      .sort(null) // Keep original order (don't sort)
+    props.pie = d3.pie().value(valueAccessor).sort(null) // Keep original order (don't sort)
 
     /* Given angle input, return svg path data */
     props.arc = d3
@@ -81,7 +78,7 @@ export default class DonutChart {
       .attr('transform', `translate(${halfWidth},${halfHeight})`)
   }
 
-  call = selection => {
+  call = (selection) => {
     this.setDerivedProps(selection)
     const { svg } = this.props
     selection.each(() => {

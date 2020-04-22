@@ -18,13 +18,13 @@ export default class Lines {
       .data(this.pie, this.keyAccessor)
       .enter()
       .append('polyline')
-      .attr('points', d => [
+      .attr('points', (d) => [
         this.arc.centroid(d),
         this.outerArc.centroid(d),
-        getLabelPosition(d, this.outerArc, this.radius)
+        getLabelPosition(d, this.outerArc, this.radius),
       ])
       .style('opacity', 0)
-      .property('__oldData__', d => d)
+      .property('__oldData__', (d) => d)
       .transition()
       .delay(700)
       .duration(500)
@@ -39,29 +39,24 @@ export default class Lines {
     lineUpdate
       .enter()
       .append('polyline')
-      .attr('points', d => [
+      .attr('points', (d) => [
         this.arc.centroid(d),
         this.outerArc.centroid(d),
-        getLabelPosition(d, this.outerArc, this.radius)
+        getLabelPosition(d, this.outerArc, this.radius),
       ])
       .style('opacity', 0)
-      .property('__oldData__', d => d)
+      .property('__oldData__', (d) => d)
       .transition()
       .duration(500)
       .style('opacity', 0.3)
 
-    lineUpdate
-      .exit()
-      .transition()
-      .duration(300)
-      .style('opacity', 0)
-      .remove()
+    lineUpdate.exit().transition().duration(300).style('opacity', 0).remove()
 
     const self = this
     lineUpdate
       .transition()
       .duration(500)
-      .attrTween('points', function(d) {
+      .attrTween('points', function (d) {
         return self.updateLineTween(d, this)
       })
   }
@@ -70,12 +65,12 @@ export default class Lines {
     const { __oldData__ } = ctx
     ctx.__oldData__ = d
     const i = d3.interpolate(__oldData__, d)
-    return t => {
+    return (t) => {
       const curr = i(t)
       return [
         this.arc.centroid(curr),
         this.outerArc.centroid(curr),
-        getLabelPosition(curr, this.outerArc, this.radius)
+        getLabelPosition(curr, this.outerArc, this.radius),
       ]
     }
   }

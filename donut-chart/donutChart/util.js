@@ -12,7 +12,7 @@ export function getLabelPosition(d, outerArc, radius) {
 
 export function tooltip(selection, props) {
   const { colorScheme, tooltipHtml, tooltipOffset, radius, svg } = props
-  selection.on('mouseenter', data => {
+  selection.on('mouseenter', (data) => {
     svg
       .append('text')
       .attr('class', 'toolCircle')
@@ -29,7 +29,7 @@ export function tooltip(selection, props) {
       .style('fill-opacity', 0.35)
   })
 
-  selection.on('mouseout', function() {
+  selection.on('mouseout', function () {
     d3.selectAll('.toolCircle').remove()
   })
 }

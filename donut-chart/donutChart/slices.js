@@ -2,7 +2,7 @@ import { tooltip } from './util.js'
 
 const initialInterpolateStart = {
   startAngle: 0,
-  endAngle: 0
+  endAngle: 0,
 }
 
 function getMidAngle(d) {
@@ -29,11 +29,11 @@ export default class Slices {
       .append('path')
       .attr('fill', this.colorScheme)
       .attr('d', this.arc)
-      .call(d => tooltip(d, this.props))
-      .property('__oldData__', d => d)
+      .call((d) => tooltip(d, this.props))
+      .property('__oldData__', (d) => d)
       .transition()
       .duration(700)
-      .attrTween('d', function(d) {
+      .attrTween('d', function (d) {
         return self.initialPathTween(d, this)
       })
   }
@@ -48,11 +48,11 @@ export default class Slices {
       .enter()
       .append('path')
       .attr('fill', this.colorScheme)
-      .call(s => tooltip(s, this.props))
-      .property('__oldData__', d => d)
+      .call((s) => tooltip(s, this.props))
+      .property('__oldData__', (d) => d)
       .transition()
       .duration(500)
-      .attrTween('d', function(d) {
+      .attrTween('d', function (d) {
         return self.enterPathTween(d, this)
       })
 
@@ -66,21 +66,21 @@ export default class Slices {
     pathUpdate
       .transition()
       .duration(500)
-      .attrTween('d', function(d) {
+      .attrTween('d', function (d) {
         return self.updatePathTween(d, this)
       })
   }
 
   initialPathTween(d, ctx) {
     const interpolate = d3.interpolate(initialInterpolateStart, d)
-    return t => this.arc(interpolate(t))
+    return (t) => this.arc(interpolate(t))
   }
 
   updatePathTween(d, ctx) {
     const { __oldData__ } = ctx
     ctx.__oldData__ = d
     const i = d3.interpolate(__oldData__, d)
-    return t => this.arc(i(t))
+    return (t) => this.arc(i(t))
   }
 
   enterPathTween(d, ctx) {
@@ -88,21 +88,21 @@ export default class Slices {
     const start = {
       ...d,
       startAngle: midAngle,
-      endAngle: midAngle
+      endAngle: midAngle,
     }
     ctx.__oldData__ = d
     const i = d3.interpolate(start, d)
-    return t => this.arc(i(t))
+    return (t) => this.arc(i(t))
   }
 
-  exitPathTween = d => {
+  exitPathTween = (d) => {
     const midAngle = getMidAngle(d)
     const end = {
       ...d,
       startAngle: midAngle,
-      endAngle: midAngle
+      endAngle: midAngle,
     }
     const i = d3.interpolate(d, end)
-    return t => this.arc(i(t))
+    return (t) => this.arc(i(t))
   }
 }

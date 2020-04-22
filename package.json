@@ -1,0 +1,16 @@
+{
+  "name": "d3-examples",
+  "version": "1.0.0",
+  "description": "D3 Examples",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osoriano/d3-examples.git"
+  },
+  "scripts": {
+    "prettier": "prettier --write '**/*.@(js|json|css|md)'"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "prettier": "^2.0.5"
+  }
+}

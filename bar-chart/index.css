@@ -1,7 +1,7 @@
 :root {
-  --body-color: #F1F3F3;
+  --body-color: #f1f3f3;
   --bar-color: #1997c6;
-  --axis-color: #D4D8DA;
+  --axis-color: #d4d8da;
 }
 
 body {
@@ -22,7 +22,7 @@ body {
 }
 
 .x path {
-    display: none;
+  display: none;
 }
 
 .tool-tip {
