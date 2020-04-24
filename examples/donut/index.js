@@ -1,4 +1,4 @@
-import DonutChart from './donutChart/index.js'
+import DonutChart from './chart/index.js'
 
 const UPDATE_INTERVAL = 1500
 const percentFormat = d3.format(',.2%')
