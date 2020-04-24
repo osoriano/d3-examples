@@ -1,5 +1,6 @@
 # D3 examples
 
-- [bar-chart](./bar-chart) - Horizontal bar chart
-- [tree](./tree) - A UI for creating trees
-- [donut-chart](./donut-chart) - Animated, updatable, d3v5
+- [bar-chart](./examples/bar) - Horizontal bar chart
+- [donut-chart](./examples/donut) - Animated, updatable, d3v5
+- [line-chart](./examples/line) - Animated, d3v5
+- [tree](./examples/tree) - A UI for creating trees
