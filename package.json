@@ -7,10 +7,13 @@
     "url": "git+https://github.com/osoriano/d3-examples.git"
   },
   "scripts": {
+    "test": "mocha ./**/*.test.js",
     "prettier": "prettier --write '**/*.@(js|json|css|md)'"
   },
   "license": "UNLICENSED",
+  "type": "module",
   "devDependencies": {
+    "mocha": "^7.1.2",
     "prettier": "^2.0.5"
   }
 }

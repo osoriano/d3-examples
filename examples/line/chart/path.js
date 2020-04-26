@@ -16,13 +16,13 @@ export default class Path {
   /* Given an array of size m < n, return an array
    * with duplicate data such that the new array length is n.
    * Duplicate the data is evenly as possible acrross the array */
-  getDuplicatedData(data, n) {
+  static getDuplicatedData(data, n) {
     const m = data.length
     const numRepeats = Math.floor(n / m)
     const remaining = n % m
 
     let leftRemaining = Math.floor(remaining / 2)
-    let rightRemaining = leftRemaining
+    let rightRemaining = leftRemaining + (remaining % 2)
     const mid_i = Math.floor(m / 2)
 
     const left = []
@@ -76,7 +76,7 @@ export default class Path {
        * To work around this, change the old path data size to match
        * the new path data size by duplicating points on the old path.
        * Then, transition to the new path. */
-      const duplicatedData = this.getDuplicatedData(oldData, newLength)
+      const duplicatedData = Path.getDuplicatedData(oldData, newLength)
 
       this.path
         .datum(duplicatedData)
