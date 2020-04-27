@@ -19,6 +19,8 @@ export default class Dot {
       .remove()
 
     dotsUpdate
+      .filter(this.updateFilter)
+      .property('__oldData__', (d) => d)
       .transition()
       .duration(duration.dot)
       .style('opacity', 0)
@@ -33,6 +35,15 @@ export default class Dot {
       .style('opacity', 1)
   }
 
+  /* Filter update events for points with the same value, to
+   * avoid unnecessary transition.
+   *
+   * Runs with the d3 element as the context*/
+  updateFilter(d) {
+    const { __oldData__ } = this
+    return d.value !== __oldData__.value
+  }
+
   enter = (selection) => {
     const { radius, duration, xScale, yScale } = this.props
     selection
@@ -41,6 +52,7 @@ export default class Dot {
       .attr('cx', (d) => xScale(d.index))
       .attr('cy', (d) => yScale(d.value))
       .attr('r', radius)
+      .property('__oldData__', (d) => d)
       .style('opacity', 0)
       .transition()
       .delay(duration.line)
