@@ -1,3 +1,4 @@
+const DOT_CLASS = 'dot'
 export default class Dot {
   constructor(svg, props) {
     this.svg = svg
@@ -6,7 +7,7 @@ export default class Dot {
 
   update(data) {
     const { duration, radius, xScale, yScale, svg } = this.props
-    const dotsUpdate = svg.selectAll('.dot').data(data)
+    const dotsUpdate = svg.selectAll(`.${DOT_CLASS}`).data(data)
 
     dotsUpdate.enter().call(this.enter)
 
@@ -36,7 +37,7 @@ export default class Dot {
     const { radius, duration, xScale, yScale } = this.props
     selection
       .append('circle')
-      .attr('class', 'dot')
+      .attr('class', DOT_CLASS)
       .attr('cx', (d) => xScale(d.index))
       .attr('cy', (d) => yScale(d.value))
       .attr('r', radius)
@@ -49,6 +50,6 @@ export default class Dot {
 
   draw() {
     const { data, svg } = this.props
-    svg.selectAll('.dot').data(data).enter().call(this.enter)
+    svg.selectAll(`.${DOT_CLASS}`).data(data).enter().call(this.enter)
   }
 }

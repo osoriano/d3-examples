@@ -1,3 +1,5 @@
+const LINE_CLASS = 'line'
+
 export default class Path {
   constructor(svg, props) {
     this.svg = svg
@@ -98,7 +100,7 @@ export default class Path {
     this.path = svg
       .append('path')
       .datum(data)
-      .attr('class', 'line')
+      .attr('class', LINE_CLASS)
       .attr('d', this.line)
 
     /* Animate initial line drawing
