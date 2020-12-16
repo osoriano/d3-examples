@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "mocha ./**/*.test.js",
-    "prettier": "prettier --write '**/*.@(js|json|css|md)'"
+    "prettier": "prettier --write '**/*.@(js|json|css|md|html)'"
   },
   "license": "UNLICENSED",
   "type": "module",
