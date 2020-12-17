@@ -40,9 +40,8 @@ async function main() {
 
   /* Updates */
   let i = 1
-  const n = 10
   function updateInterval() {
-    if (i >= n) {
+    if (i >= data.length) {
       return
     }
     donut.data(data[i])
