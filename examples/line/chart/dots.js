@@ -30,7 +30,7 @@ export default class Dot {
       .attr('cy', (d) => yScale(d.value))
       .attr('r', radius)
       .transition()
-      .delay(duration.line - 2 * duration.dot)
+      .delay(duration.line - duration.dot)
       .duration(duration.dot)
       .style('opacity', 1)
   }
