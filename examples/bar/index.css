@@ -33,4 +33,7 @@ body {
   border: 1px solid var(--bar-color);
   padding: 14px;
   text-align: center;
+
+  /* Avoid interfering with element triggering the tooltip */
+  pointer-events: none;
 }
