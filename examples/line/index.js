@@ -25,19 +25,19 @@ function getData() {
 }
 
 async function main() {
-  const data = getData()
-  const line = new LineChart().data(data)
+  const initData = getData()
+  const line = new LineChart().data(initData)
 
   /* Initial render */
-  d3.select('#chart').call(line.call)
+  d3.select('#chart').call(line.draw)
 
   /* Updates */
-  function updateInterval() {
-    const updateData = getData()
-    line.data(updateData)
-    setTimeout(updateInterval, UPDATE_INTERVAL)
+  function updateData() {
+    const data = getData()
+    line.data(data)
+    setTimeout(updateData, UPDATE_INTERVAL)
   }
-  setTimeout(updateInterval, UPDATE_INTERVAL)
+  setTimeout(updateData, UPDATE_INTERVAL)
 }
 
 main()

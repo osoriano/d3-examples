@@ -31,7 +31,8 @@ export default class Lines {
       .style('opacity', 0.3)
   }
 
-  update(data) {
+  dataUpdate() {
+    const { data } = this.props
     const lineUpdate = this.selection
       .selectAll('polyline')
       .data(this.pie(data), this.keyAccessor)

@@ -34,7 +34,8 @@ export default class Labels {
       .style('opacity', 1)
   }
 
-  update(data) {
+  dataUpdate() {
+    const { data } = this.props
     const labelUpdate = this.selection
       .selectAll('text')
       .data(this.pie(data), this.keyAccessor)

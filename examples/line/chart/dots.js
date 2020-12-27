@@ -5,8 +5,8 @@ export default class Dot {
     this.props = props
   }
 
-  update(data) {
-    const { duration, radius, xScale, yScale, svg } = this.props
+  dataUpdate() {
+    const { data, duration, radius, xScale, yScale, svg } = this.props
     const dotsUpdate = svg.selectAll(`.${DOT_CLASS}`).data(data)
 
     dotsUpdate.enter().call(this.enter)

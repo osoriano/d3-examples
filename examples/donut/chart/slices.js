@@ -38,7 +38,8 @@ export default class Slices {
       })
   }
 
-  update(data) {
+  dataUpdate() {
+    const { data } = this.props
     const self = this
     const pathUpdate = this.selection
       .selectAll('path')

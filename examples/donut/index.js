@@ -28,27 +28,28 @@ async function main() {
     .entries(await d3.tsv('species.tsv'))
     .map((entry) => entry.values)
 
+  const initData = data[0]
   const donut = new DonutChart()
     .labelHtml(labelHtml)
     .tooltipHtml(tooltipHtml)
     .valueAccessor((d) => d.prob)
     .keyAccessor((d) => d.data.species)
-    .data(data[0])
+    .data(initData)
 
   /* Initial render */
-  d3.select('#chart').call(donut.call)
+  d3.select('#chart').call(donut.draw)
 
   /* Updates */
   let i = 1
-  function updateInterval() {
+  function updateData() {
     if (i >= data.length) {
       return
     }
     donut.data(data[i])
     i += 1
-    setTimeout(updateInterval, UPDATE_INTERVAL)
+    setTimeout(updateData, UPDATE_INTERVAL)
   }
-  setTimeout(updateInterval, UPDATE_INTERVAL)
+  setTimeout(updateData, UPDATE_INTERVAL)
 }
 
 main()

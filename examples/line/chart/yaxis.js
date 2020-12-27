@@ -4,7 +4,7 @@ export default class YAxis {
     this.props = props
   }
 
-  update(data) {}
+  dataUpdate() {}
 
   draw() {
     const { height, yScale, svg } = this.props

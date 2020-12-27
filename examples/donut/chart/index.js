@@ -31,17 +31,17 @@ export default class DonutChart {
         }
         this.props[prop] = value
         if (typeof this[`${prop}Update`] === 'function') {
-          this[`${prop}Update`](value)
+          this[`${prop}Update`]()
         }
         return this
       }
     }
   }
 
-  _dataUpdate(data) {
-    this.slices.update(data)
-    this.lines.update(data)
-    this.labels.update(data)
+  _dataUpdate() {
+    this.slices.dataUpdate()
+    this.lines.dataUpdate()
+    this.labels.dataUpdate()
   }
 
   setDerivedProps(selection) {
@@ -78,7 +78,7 @@ export default class DonutChart {
       .attr('transform', `translate(${halfWidth},${halfHeight})`)
   }
 
-  call = (selection) => {
+  draw = (selection) => {
     this.setDerivedProps(selection)
     const { svg } = this.props
 

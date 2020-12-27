@@ -51,8 +51,8 @@ export default class Path {
     return left.concat(right.reverse())
   }
 
-  update(data) {
-    const { duration } = this.props
+  dataUpdate() {
+    const { data, duration } = this.props
     const oldData = this.path.data()[0]
     const oldLength = oldData.length
     const newLength = data.length

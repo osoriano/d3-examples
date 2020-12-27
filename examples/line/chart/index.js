@@ -31,8 +31,8 @@ export default class LineChart {
     }
   }
 
-  _dataUpdate(data) {
-    const { xScale, oldXScale } = this.props
+  _dataUpdate() {
+    const { data, xScale, oldXScale } = this.props
     const oldDomain = xScale.domain()
     const lastIndex = data[data.length - 1].index
     const newDomain = [0, lastIndex]
@@ -40,9 +40,9 @@ export default class LineChart {
     oldXScale.domain(oldDomain)
     xScale.domain(newDomain)
 
-    this.xaxis.update(data)
-    this.path.update(data)
-    this.dots.update(data)
+    this.xaxis.dataUpdate()
+    this.path.dataUpdate()
+    this.dots.dataUpdate()
   }
 
   setDerivedProps(selection) {
@@ -79,7 +79,7 @@ export default class LineChart {
       .attr('transform', `translate(${margin.left}, ${margin.top})`)
   }
 
-  call = (selection) => {
+  draw = (selection) => {
     this.setDerivedProps(selection)
 
     const { props } = this
