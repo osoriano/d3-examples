@@ -74,7 +74,8 @@ export default class LineChart {
       .datum(data)
       .append('svg')
       .attr('viewBox', `0 0 ${totalWidth} ${totalHeight}`)
-      .attr('preserveAspectRatio', 'xMinYMin')
+      /* Display at top center */
+      .attr('preserveAspectRatio', 'xMidYMin')
       .append('g')
       .attr('transform', `translate(${margin.left}, ${margin.top})`)
   }

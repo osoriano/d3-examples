@@ -71,8 +71,9 @@ export default class DonutChart {
     props.svg = selection
       .datum(data)
       .append('svg')
-      .attr('width', width)
-      .attr('height', height)
+      .attr('viewBox', `0 0 ${width} ${height}`)
+      /* Display at top center */
+      .attr('preserveAspectRatio', 'xMidYMin')
       .append('g')
       .attr('transform', `translate(${halfWidth},${halfHeight})`)
   }

@@ -5,8 +5,8 @@ export default class Tree {
   constructor() {
     /* Default props */
     this.props = {
-      margin: { top: 20, right: 240, bottom: 20, left: 240 },
-      width: 1000,
+      margin: { top: 20, right: 50, bottom: 20, left: 50 },
+      width: 1100,
       height: 460,
       duration: 750,
       radius: 10,
@@ -66,12 +66,13 @@ export default class Tree {
     this.tree = d3.tree().size([height, width])
     props.svg = selection
       .append('svg')
-      .attr('width', totalWidth)
-      .attr('height', totalHeight)
+      .attr('viewBox', `0 0 ${totalWidth} ${totalHeight}`)
+      /* Display at top center */
+      .attr('preserveAspectRatio', 'xMidYMin')
       .append('g')
       .attr(
         'transform',
-        `translate(${marginHorizontal / 2}, ${marginVertical / 2})`
+        `translate(${margin.left}, ${margin.top})`
       )
     props.toggleChildren = this.toggleChildren
     props.data = this.getData()
