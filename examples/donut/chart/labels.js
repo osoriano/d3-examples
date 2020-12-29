@@ -66,7 +66,7 @@ export default class Labels {
       .html(this.labelHtml)
       .transition()
       .duration(500)
-      .attrTween('transform', function (d) {
+      .attrTween('transform', function attrTween(d) {
         return self.updateLabelTween(d, this)
       })
       .styleTween('text-anchor', this.updateLabelStyleTween)

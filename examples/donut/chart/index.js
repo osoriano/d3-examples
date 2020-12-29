@@ -1,7 +1,6 @@
 import Slices from './slices.js'
 import Lines from './lines.js'
 import Labels from './labels.js'
-import { getMidAngle } from './util.js'
 
 const defaultColorScheme = d3.scaleOrdinal(d3.schemeCategory10)
 
@@ -16,7 +15,7 @@ export default class DonutChart {
       labelHtml: (d) => d.data,
       padAngle: 0.015,
       tooltipHtml: (d) => d.data,
-      tooltipOffset: (d) => -15,
+      tooltipOffset: () => -15,
       valueAccessor: (d) => d,
       keyAccessor: (d) => d,
       width: 960,

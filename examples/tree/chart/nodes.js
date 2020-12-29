@@ -17,9 +17,12 @@ export default class Nodes {
       .attr('transform', this.toExpandFrom)
       .on('click', toggleChildren)
 
-    nodeEnter.transition().duration(duration).attr('transform', this.toPosition)
+    nodeEnter
+      .transition()
+      .duration(duration)
+      .attr('transform', Nodes.toPosition)
 
-    nodeEnter.append('circle').style('fill', this.nodeFill).attr('r', radius)
+    nodeEnter.append('circle').style('fill', Nodes.nodeFill).attr('r', radius)
 
     setTimeout(() => {
       nodeEnter
@@ -32,9 +35,9 @@ export default class Nodes {
     nodeUpdate
       .transition()
       .duration(duration)
-      .attr('transform', this.toPosition)
+      .attr('transform', Nodes.toPosition)
 
-    nodeUpdate.select('circle').style('fill', this.nodeFill)
+    nodeUpdate.select('circle').style('fill', Nodes.nodeFill)
 
     nodeUpdate
       .select('text')
@@ -62,13 +65,13 @@ export default class Nodes {
       .enter()
       .append('g')
       .attr('class', 'node')
-      .attr('transform', this.toPosition)
+      .attr('transform', Nodes.toPosition)
       .on('click', toggleChildren)
 
     nodeEnter
       .append('circle')
       .attr('r', 0)
-      .style('fill', this.nodeFill)
+      .style('fill', Nodes.nodeFill)
       .transition()
       .duration(duration)
       .attr('r', radius)
@@ -82,12 +85,12 @@ export default class Nodes {
     }, duration)
   }
 
-  nodeFill(d) {
+  static nodeFill(d) {
     d = d.data
     return d._children ? 'lightsteelblue' : 'transparent'
   }
 
-  toPosition(d) {
+  static toPosition(d) {
     return `translate(${d.y},${d.x})`
   }
 

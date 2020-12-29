@@ -7,12 +7,20 @@
     "url": "git+https://github.com/osoriano/d3-examples.git"
   },
   "scripts": {
+    "eslint": "eslint --ignore-path .gitignore '**/*.js'",
     "test": "mocha ./**/*.test.js",
-    "prettier": "prettier --write '**/*.@(js|json|css|md|html)'"
+    "prettier": "prettier --write '**/*.@(js|json|yaml|css|md|html)'"
   },
   "license": "UNLICENSED",
   "type": "module",
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/eslint-parser": "^7.12.1",
+    "@babel/plugin-syntax-class-properties": "^7.12.1",
+    "eslint": "^7.16.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-import": "^2.22.1",
     "mocha": "^8.2.1",
     "prettier": "^2.2.1"
   }

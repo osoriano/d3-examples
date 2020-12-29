@@ -56,7 +56,7 @@ export default class Tree {
 
   setDerivedProps(selection) {
     const { props } = this
-    const { width, height, margin, radius } = props
+    const { width, height, margin } = props
 
     const marginHorizontal = margin.left + margin.right
     const marginVertical = margin.top + margin.bottom
@@ -71,7 +71,7 @@ export default class Tree {
       .append('g')
       .attr(
         'transform',
-        'translate(' + marginHorizontal / 2 + ', ' + marginVertical / 2 + ')'
+        `translate(${marginHorizontal / 2}, ${marginVertical / 2})`
       )
     props.toggleChildren = this.toggleChildren
     props.data = this.getData()

@@ -1,12 +1,8 @@
-import { tooltip } from './util.js'
+import { getMidAngle, tooltip } from './util.js'
 
 const initialInterpolateStart = {
   startAngle: 0,
   endAngle: 0,
-}
-
-function getMidAngle(d) {
-  return d.startAngle + (d.endAngle - d.startAngle) / 2
 }
 
 export default class Slices {
@@ -23,7 +19,6 @@ export default class Slices {
     const { svg } = this.props
     this.selection = svg.append('g').attr('class', 'slices')
 
-    const self = this
     this.selection
       .selectAll('path')
       .data(this.pie, this.keyAccessor)
@@ -35,9 +30,7 @@ export default class Slices {
       .property('__oldData__', (d) => d)
       .transition()
       .duration(700)
-      .attrTween('d', function (d) {
-        return self.initialPathTween(d, this)
-      })
+      .attrTween('d', this.initialPathTween)
   }
 
   dataUpdate() {
@@ -55,7 +48,7 @@ export default class Slices {
       .property('__oldData__', (d) => d)
       .transition()
       .duration(500)
-      .attrTween('d', function (d) {
+      .attrTween('d', function attrTween(d) {
         return self.enterPathTween(d, this)
       })
 
@@ -69,12 +62,12 @@ export default class Slices {
     pathUpdate
       .transition()
       .duration(500)
-      .attrTween('d', function (d) {
+      .attrTween('d', function attrTween(d) {
         return self.updatePathTween(d, this)
       })
   }
 
-  initialPathTween(d, ctx) {
+  initialPathTween = (d) => {
     const interpolate = d3.interpolate(initialInterpolateStart, d)
     return (t) => this.arc(interpolate(t))
   }

@@ -37,7 +37,7 @@ export default class Dot {
   /* Filter update events for points with the same value, to
    * avoid unnecessary transition.
    *
-   * Runs with the d3 element as the context*/
+   * Runs with the d3 element as the context */
   updateFilter(d) {
     const { __oldData__ } = this
     return d.value !== __oldData__.value

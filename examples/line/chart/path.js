@@ -24,10 +24,10 @@ export default class Path {
 
     let leftRemaining = Math.floor(remaining / 2)
     let rightRemaining = leftRemaining + (remaining % 2)
-    const mid_i = Math.floor(m / 2)
+    const midI = Math.floor(m / 2)
 
     const left = []
-    for (let i = 0; i < mid_i; i += 1) {
+    for (let i = 0; i < midI; i += 1) {
       for (let j = 0; j < numRepeats; j += 1) {
         left.push(data[i])
       }
@@ -38,7 +38,7 @@ export default class Path {
     }
 
     const right = []
-    for (let i = m - 1; i >= mid_i; i -= 1) {
+    for (let i = m - 1; i >= midI; i -= 1) {
       for (let j = 0; j < numRepeats; j += 1) {
         right.push(data[i])
       }

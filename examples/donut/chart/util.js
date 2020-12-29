@@ -29,7 +29,7 @@ export function tooltip(selection, props) {
       .style('fill-opacity', 0.35)
   })
 
-  selection.on('mouseout', function () {
+  selection.on('mouseout', () => {
     d3.selectAll('.toolCircle').remove()
   })
 }

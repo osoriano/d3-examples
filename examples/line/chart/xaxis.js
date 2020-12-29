@@ -4,7 +4,7 @@ export default class XAxis {
   }
 
   dataUpdate() {
-    const { data, duration, xScale } = this.props
+    const { duration, xScale } = this.props
     this.axis.transition().duration(duration.line).call(d3.axisBottom(xScale))
   }
 

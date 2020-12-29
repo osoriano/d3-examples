@@ -81,26 +81,17 @@ export default class LineChart {
 
   draw = (selection) => {
     this.setDerivedProps(selection)
-
     const { props } = this
-    const {
-      margin,
-      width,
-      height,
-      totalWidth,
-      totalHeight,
-      duration,
-      radius,
-      data,
-      svg,
-    } = props
 
     this.xaxis = new XAxis(props)
     this.xaxis.draw()
+
     this.yaxis = new YAxis(props)
     this.yaxis.draw()
+
     this.path = new Path(props)
     this.path.draw()
+
     this.dots = new Dots(props)
     this.dots.draw()
 

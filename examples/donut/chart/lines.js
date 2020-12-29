@@ -59,7 +59,7 @@ export default class Lines {
     lineUpdate
       .transition()
       .duration(500)
-      .attrTween('points', function (d) {
+      .attrTween('points', function attrTween(d) {
         return self.updateLineTween(d, this)
       })
   }
