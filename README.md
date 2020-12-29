@@ -1,5 +1,13 @@
 # D3 examples
 
-- [donut-chart](./examples/donut) - Animated, updatable, d3v5
-- [line-chart](./examples/line) - Animated, d3v5
-- [tree](./examples/tree) - A UI for creating trees
+## Features
+
+- Uses d3v6
+- Animated
+- Updatable
+
+# Charts
+
+- [donut-chart](./examples/donut)
+- [line-chart](./examples/line)
+- [tree-chart](./examples/tree)

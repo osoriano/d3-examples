@@ -1,6 +1,5 @@
 export default class XAxis {
-  constructor(svg, props) {
-    this.svg = svg
+  constructor(props) {
     this.props = props
   }
 

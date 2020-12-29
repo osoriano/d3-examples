@@ -1,8 +1,7 @@
 import { getLabelPosition } from './util.js'
 
 export default class Lines {
-  constructor(selection, props) {
-    this.selection = selection
+  constructor(props) {
     this.props = props
     const { keyAccessor, pie, arc, outerArc, radius } = props
     this.keyAccessor = keyAccessor
@@ -13,6 +12,9 @@ export default class Lines {
   }
 
   draw() {
+    const { svg } = this.props
+    this.selection = svg.append('g').attr('class', 'lines')
+
     this.selection
       .selectAll('polyline')
       .data(this.pie, this.keyAccessor)

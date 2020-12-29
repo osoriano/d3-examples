@@ -1,8 +1,7 @@
 const LINE_CLASS = 'line'
 
 export default class Path {
-  constructor(svg, props) {
-    this.svg = svg
+  constructor(props) {
     this.props = props
     const { xScale, yScale, oldXScale } = this.props
     this.oldLine = d3

@@ -80,24 +80,17 @@ export default class DonutChart {
 
   draw = (selection) => {
     this.setDerivedProps(selection)
-    const { svg } = this.props
 
     /* donut slices */
-    const pathG = svg.append('g').attr('class', 'slices')
-
-    this.slices = new Slices(pathG, this.props)
+    this.slices = new Slices(this.props)
     this.slices.draw()
 
     /* Text labels */
-    const labelG = svg.append('g').attr('class', 'labelName')
-
-    this.labels = new Labels(labelG, this.props)
+    this.labels = new Labels(this.props)
     this.labels.draw()
 
     /* Line from slice centroid, to outer arc, to label */
-    const lineG = svg.append('g').attr('class', 'lines')
-
-    this.lines = new Lines(lineG, this.props)
+    this.lines = new Lines(this.props)
     this.lines.draw()
 
     /* Allow updates after first call */

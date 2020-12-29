@@ -10,8 +10,7 @@ function getMidAngle(d) {
 }
 
 export default class Slices {
-  constructor(selection, props) {
-    this.selection = selection
+  constructor(props) {
     this.props = props
     const { pie, arc, keyAccessor, colorScheme } = props
     this.pie = pie
@@ -21,6 +20,9 @@ export default class Slices {
   }
 
   draw() {
+    const { svg } = this.props
+    this.selection = svg.append('g').attr('class', 'slices')
+
     const self = this
     this.selection
       .selectAll('path')

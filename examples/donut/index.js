@@ -22,11 +22,9 @@ function tooltipHtml({ data: d }) {
 }
 
 async function main() {
-  const data = d3
-    .nest()
-    .key((d) => d.time)
-    .entries(await d3.tsv('species.tsv'))
-    .map((entry) => entry.values)
+  const data = Array.from(
+    d3.group(await d3.tsv('species.tsv'), (d) => d.time).values()
+  )
 
   const initData = data[0]
   const donut = new DonutChart()

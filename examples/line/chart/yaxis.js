@@ -1,6 +1,5 @@
 export default class YAxis {
-  constructor(svg, props) {
-    this.svg = svg
+  constructor(props) {
     this.props = props
   }
 

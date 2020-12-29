@@ -1,8 +1,7 @@
 import { getMidAngle, getLabelPosition, tooltip } from './util.js'
 
 export default class Labels {
-  constructor(selection, props) {
-    this.selection = selection
+  constructor(props) {
     this.props = props
     const { keyAccessor, pie, outerArc, labelHtml, radius } = props
     this.keyAccessor = keyAccessor
@@ -13,6 +12,9 @@ export default class Labels {
   }
 
   draw() {
+    const { svg } = this.props
+    this.selection = svg.append('g').attr('class', 'labelName')
+
     this.selection
       .selectAll('text')
       .data(this.pie, this.keyAccessor)

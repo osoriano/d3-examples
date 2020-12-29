@@ -95,13 +95,13 @@ export default class LineChart {
       svg,
     } = props
 
-    this.xaxis = new XAxis(svg, props)
+    this.xaxis = new XAxis(props)
     this.xaxis.draw()
-    this.yaxis = new YAxis(svg, props)
+    this.yaxis = new YAxis(props)
     this.yaxis.draw()
-    this.path = new Path(svg, props)
+    this.path = new Path(props)
     this.path.draw()
-    this.dots = new Dots(svg, props)
+    this.dots = new Dots(props)
     this.dots.draw()
 
     /* Allow updates after first call */

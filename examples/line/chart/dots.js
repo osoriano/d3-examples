@@ -1,7 +1,6 @@
 const DOT_CLASS = 'dot'
 export default class Dot {
-  constructor(svg, props) {
-    this.svg = svg
+  constructor(props) {
     this.props = props
   }
 
