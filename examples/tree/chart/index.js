@@ -70,10 +70,7 @@ export default class Tree {
       /* Display at top center */
       .attr('preserveAspectRatio', 'xMidYMin')
       .append('g')
-      .attr(
-        'transform',
-        `translate(${margin.left}, ${margin.top})`
-      )
+      .attr('transform', `translate(${margin.left}, ${margin.top})`)
     props.toggleChildren = this.toggleChildren
     props.data = this.getData()
   }
