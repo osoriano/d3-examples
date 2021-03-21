@@ -2,11 +2,15 @@
 env:
   browser: true
   es2021: true
-  mocha: true
+  jest: true
 extends:
   - eslint:recommended
   - airbnb-base
   - prettier
+  - plugin:jest/recommended
+  - plugin:jest/style
+plugins:
+  - jest
 parser: '@babel/eslint-parser'
 parserOptions:
   ecmaVersion: 12

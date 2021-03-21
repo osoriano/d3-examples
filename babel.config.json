@@ -1,4 +1,4 @@
 {
   "plugins": ["@babel/plugin-syntax-class-properties"],
-  "presets": []
+  "presets": [["@babel/preset-env", { "targets": { "node": "current" } }]]
 }

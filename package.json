@@ -7,6 +7,7 @@
     "url": "git+https://github.com/osoriano/d3-examples.git"
   },
   "scripts": {
+    "test": "jest",
     "eslint": "eslint --ignore-path .gitignore '**/*.js'",
     "prettier": "prettier --write '**/*.@(js|json|yaml|css|md|html)'"
   },
@@ -16,10 +17,14 @@
     "@babel/core": "^7.12.10",
     "@babel/eslint-parser": "^7.12.1",
     "@babel/plugin-syntax-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.13.10",
+    "babel-jest": "^26.6.3",
     "eslint": "^7.16.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.3.2",
+    "jest": "^26.6.3",
     "prettier": "^2.2.1"
   }
 }
