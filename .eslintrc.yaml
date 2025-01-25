@@ -17,6 +17,7 @@ parserOptions:
   sourceType: module
 globals:
   d3: true
+  dagre: true
 rules:
   no-plusplus: 'off'
   import/extensions: 'off'
@@ -24,3 +25,4 @@ rules:
   no-restricted-syntax: 'off'
   no-underscore-dangle: 'off'
   guard-for-in: 'off'
+  no-use-before-define: 'off'

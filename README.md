@@ -11,3 +11,5 @@
 - [donut-chart](./examples/donut)
 - [line-chart](./examples/line)
 - [tree-chart](./examples/tree)
+- [dagre](./examples/dagre)
+- [svg](./examples/svg)

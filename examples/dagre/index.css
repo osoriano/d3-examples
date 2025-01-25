@@ -1,0 +1,54 @@
+:root {
+  --text-color: #333;
+  --panel-color: rgb(243, 247, 246);
+  --node-border-color: #e4e4e4;
+  --edge-color: #78849e;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-color);
+}
+
+pre {
+  max-width: 800px;
+}
+
+.panel {
+  background-color: var(--panel-color);
+  border: 1px var(--panel-color) solid;
+  border-radius: 15px;
+  padding: 20px 30px;
+}
+
+.graph-container {
+  display: inline-block;
+}
+
+.node {
+  stroke: black;
+  fill: #fff;
+  stroke: var(--node-border-color);
+  stroke-width: 1;
+}
+
+.node-label {
+  fill: var(--text-color);
+  text-anchor: middle;
+  dominant-baseline: middle;
+  alignment-baseline: middle;
+}
+
+.edge {
+  fill: none;
+  stroke: var(--edge-color);
+  stroke-width: 1;
+  stroke-dasharray: 5;
+  animation: dashdraw 0.5s linear infinite;
+}
+
+@keyframes dashdraw {
+  0% {
+    stroke-dashoffset: 10;
+  }
+}
