@@ -1,53 +1,53 @@
-import DonutChart from './chart/index.js'
+import DonutChart from "./chart/index.js";
 
-const UPDATE_INTERVAL = 1500
-const percentFormat = d3.format(',.2%')
+const UPDATE_INTERVAL = 1500;
+const percentFormat = d3.format(",.2%");
 
 function labelHtml({ data: d }) {
-  return `${d.species}: <tspan>${percentFormat(d.prob)}</tspan>`
+  return `${d.species}: <tspan>${percentFormat(d.prob)}</tspan>`;
 }
 
 function tooltipHtml({ data: d }) {
   return [
     '<tspan x="0">Species: ',
     d.species,
-    '</tspan>',
+    "</tspan>",
     '<tspan x="0" dy="1.2em">Probability: ',
     percentFormat(d.prob),
-    '</tspan>',
+    "</tspan>",
     '<tspan x="0" dy="1.2em">Error: ',
     percentFormat(d.err),
-    '</tspan>',
-  ].join('')
+    "</tspan>",
+  ].join("");
 }
 
 async function main() {
   const data = Array.from(
-    d3.group(await d3.tsv('species.tsv'), (d) => d.time).values()
-  )
+    d3.group(await d3.tsv("species.tsv"), (d) => d.time).values(),
+  );
 
-  const initData = data[0]
+  const initData = data[0];
   const donut = new DonutChart()
     .labelHtml(labelHtml)
     .tooltipHtml(tooltipHtml)
     .valueAccessor((d) => d.prob)
     .keyAccessor((d) => d.data.species)
-    .data(initData)
+    .data(initData);
 
   /* Initial render */
-  d3.select('#chart').call(donut.draw)
+  d3.select("#chart").call(donut.draw);
 
   /* Updates */
-  let i = 1
+  let i = 1;
   function updateData() {
     if (i >= data.length) {
-      return
+      return;
     }
-    donut.data(data[i])
-    i += 1
-    setTimeout(updateData, UPDATE_INTERVAL)
+    donut.data(data[i]);
+    i += 1;
+    setTimeout(updateData, UPDATE_INTERVAL);
   }
-  setTimeout(updateData, UPDATE_INTERVAL)
+  setTimeout(updateData, UPDATE_INTERVAL);
 }
 
-main()
+main();
