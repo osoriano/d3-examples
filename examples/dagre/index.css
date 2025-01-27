@@ -39,6 +39,15 @@ pre {
   alignment-baseline: middle;
 }
 
+.node-content {
+  width: 100%;
+  height: 100%;
+  padding: 11px 15px;
+  color: #737373;
+  font-size: 12px;
+  font-weight: bold;
+}
+
 .edge {
   fill: none;
   stroke: var(--edge-color);

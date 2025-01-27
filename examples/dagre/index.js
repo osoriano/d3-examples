@@ -83,7 +83,21 @@ function getSvgNodes(nodeLabels) {
       `<text x="${x}" y="${y}" class="node-label">${label}</text>`,
   );
 
-  return rectElements.concat(textElements).join("\n");
+  const htmlElements = nodeLabels.map(({ width, height, x, y }) => {
+    // Since (x, y) is at the center, calculate the left x (lx)
+    // and top y (ty) for use with rect
+    const lx = x - width / 2;
+    const ty = y - height / 2;
+    return `
+      <foreignObject width="${width}" height="${height}" x="${lx}" y="${ty}">
+        <body xmlns="http://www.w3.org/1999/xhtml">
+          <div class="node-content"><i class="fa fa-user-o"></i> User</div>
+        </body>
+      </foreignObject>
+    `;
+  });
+
+  return rectElements.concat(textElements).concat(htmlElements).join("\n");
 }
 
 function getSvgEdges(edgeLabels) {
